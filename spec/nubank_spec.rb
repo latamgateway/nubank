@@ -84,7 +84,7 @@ RSpec.describe Nubank do
             VCR.use_cassette(:duplicate_payment) do
               2.times { create_payment.call(reference_id: reference_id) }
             end
-          }.to raise_error(RuntimeError)
+          }.to raise_error(Nubank::Error)
         end
       end
     end
@@ -154,7 +154,7 @@ RSpec.describe Nubank do
             VCR.use_cassette(:duplicate_refund) do
               2.times { create_refund.call(refund_id: refund_id) }
             end
-          }.to raise_error(RuntimeError)
+          }.to raise_error(Nubank::Error)
         end
       end
 
@@ -171,7 +171,7 @@ RSpec.describe Nubank do
         it "raises an error" do
           expect {
             VCR.use_cassette(:overvalue_refund) { create_refund.call }
-          }.to raise_error(RuntimeError)
+          }.to raise_error(Nubank::Error)
         end
       end
     end

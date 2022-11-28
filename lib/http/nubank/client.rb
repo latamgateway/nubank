@@ -1,4 +1,5 @@
 require_relative "../json/client"
+require_relative "../../nubank/error"
 
 module HTTP
   module Nubank
@@ -29,7 +30,7 @@ module HTTP
 
       def request(...)
         response = super
-        raise response.to_s unless response.successful?
+        raise ::Nubank::Error, response.to_json unless response.successful?
         response
       end
     end
