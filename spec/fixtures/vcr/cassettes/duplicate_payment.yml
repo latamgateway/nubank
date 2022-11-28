@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-api.spinpay.com.br/v1/checkouts/payments
+    body:
+      encoding: UTF-8
+      string: '{"merchantOrderReference":"4bb75f69-75c7-4b8b-8888-9579c0122d2b","referenceId":"4bb75f69-75c7-4b8b-8888-9579c0122d2b","amount":{"value":12.34,"currency":"BRL"},"shopper":{"firstName":"John","lastName":"Doe","document":"12345678810","documentType":"CPF","email":"john.doe@example.com","phone":{"country":"55","number":"21987654321"}},"items":[{"id":"1","value":12.34,"quantity":1,"description":"A
+        dozen eggs"}],"callbackUrl":"https://example.com/webhooks","delayToAutoCancel":30,"delayToSettlement":1}'
+    headers:
+      X-Merchant-Key:
+      - "<X-Merchant-Key>"
+      X-Merchant-Token:
+      - "<X-Merchant-Token>"
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: null
+    headers:
+      'Http/2 200 ':
+      - ''
+      Date:
+      - Sun, 27 Nov 2022 12:51:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Transaction-Id:
+      - b1c4ed92-c1df-464d-a506-d88955321249
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Download-Options:
+      - noopen
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - X-HTTP-Method-Override
+      Etag:
+      - W/"90-gwv1ijyVUU8B41bxDFj7P57AbzI"
+      Content-Security-Policy:
+      - upgrade-insecure-requests
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Permissions-Policy:
+      - autoplay=(), accelerometer=(), camera=(), document-domain=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), sync-xhr=(), usb=(), picture-in-picture=(), publickey-credentials-get=(),
+        screen-wake-lock=(), xr-spatial-tracking=()
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 770afed8cbd98ef2-SOF
+      Content-Encoding:
+      - gzip
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"WAITING_PAYMENT_METHOD","pspReferenceId":"cd111100-c6f1-476b-a0bc-ecb937e9ee78","referenceId":"4bb75f69-75c7-4b8b-8888-9579c0122d2b"}'
+  recorded_at: Sun, 27 Nov 2022 12:51:29 GMT
+- request:
+    method: post
+    uri: https://sandbox-api.spinpay.com.br/v1/checkouts/payments
+    body:
+      encoding: UTF-8
+      string: '{"merchantOrderReference":"4bb75f69-75c7-4b8b-8888-9579c0122d2b","referenceId":"4bb75f69-75c7-4b8b-8888-9579c0122d2b","amount":{"value":12.34,"currency":"BRL"},"shopper":{"firstName":"John","lastName":"Doe","document":"12345678810","documentType":"CPF","email":"john.doe@example.com","phone":{"country":"55","number":"21987654321"}},"items":[{"id":"1","value":12.34,"quantity":1,"description":"A
+        dozen eggs"}],"callbackUrl":"https://example.com/webhooks","delayToAutoCancel":30,"delayToSettlement":1}'
+    headers:
+      X-Merchant-Key:
+      - "<X-Merchant-Key>"
+      X-Merchant-Token:
+      - "<X-Merchant-Token>"
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: null
+    headers:
+      'Http/2 400 ':
+      - ''
+      Date:
+      - Sun, 27 Nov 2022 12:51:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '172'
+      X-Transaction-Id:
+      - 0e76e7e7-3552-4f63-ab93-fe080969851a
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Download-Options:
+      - noopen
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - X-HTTP-Method-Override
+      Etag:
+      - W/"ac-XgvY4Hl9g97I6ED2094kw/AoH2U"
+      Content-Security-Policy:
+      - upgrade-insecure-requests
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Permissions-Policy:
+      - autoplay=(), accelerometer=(), camera=(), document-domain=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), sync-xhr=(), usb=(), picture-in-picture=(), publickey-credentials-get=(),
+        screen-wake-lock=(), xr-spatial-tracking=()
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 770afeddabcd8ef2-SOF
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":400,"message":"[400] This checkout already exists; (stackId:
+        04125a68-3774-4506-b859-9e880abd468b)","stackId":"04125a68-3774-4506-b859-9e880abd468b","details":{}}'
+  recorded_at: Sun, 27 Nov 2022 12:51:29 GMT
+recorded_with: VCR 6.1.0

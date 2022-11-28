@@ -1,0 +1,5 @@
+#<struct Nubank::Refund::New
+ payment_id="10eaac4f-5cb2-4552-b84d-a7d47491b9c8",
+ refund_id="96f920cd-025e-4b54-a8fc-009d6816e1c3",
+ status=:REFUNDING,
+ due_time=2022-12-06 02:59:59 UTC>

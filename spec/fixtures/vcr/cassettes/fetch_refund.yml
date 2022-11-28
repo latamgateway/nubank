@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-api.spinpay.com.br/v1/checkouts/payments/10eaac4f-5cb2-4552-b84d-a7d47491b9c8/refunds/96f920cd-025e-4b54-a8fc-009d6816e1c3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Merchant-Key:
+      - "<X-Merchant-Key>"
+      X-Merchant-Token:
+      - "<X-Merchant-Token>"
+  response:
+    status:
+      code: 200
+      message: null
+    headers:
+      'Http/2 200 ':
+      - ''
+      Date:
+      - Sun, 27 Nov 2022 23:45:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Transaction-Id:
+      - 39972b0c-98ca-4cdd-8f11-33c44389695b
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Download-Options:
+      - noopen
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"104-Tw5Pp+lTnce9HU9d3lAeGMMR8OE"
+      Content-Security-Policy:
+      - upgrade-insecure-requests
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Permissions-Policy:
+      - autoplay=(), accelerometer=(), camera=(), document-domain=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), sync-xhr=(), usb=(), picture-in-picture=(), publickey-credentials-get=(),
+        screen-wake-lock=(), xr-spatial-tracking=()
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 770ebce49a3f8ee7-SOF
+      Content-Encoding:
+      - gzip
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"requestedBy":null,"source":"api","status":"REFUNDING","dueDate":"2022-12-06T02:59:59.000Z","transactionRefundId":"076f0c93-a53b-44f5-b696-5cb7bdd3a1a9","pspReferenceId":"10eaac4f-5cb2-4552-b84d-a7d47491b9c8","refundId":"96f920cd-025e-4b54-a8fc-009d6816e1c3"}'
+  recorded_at: Sun, 27 Nov 2022 23:45:30 GMT
+recorded_with: VCR 6.1.0
