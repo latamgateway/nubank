@@ -6,6 +6,7 @@ require_relative "nubank/payment/new"
 require_relative "nubank/payment/status"
 require_relative "nubank/refund/new"
 require_relative "nubank/refund/status"
+require_relative "nubank/error/qrcode_unavailable"
 
 class Nubank
   attr_accessor :logger
@@ -83,7 +84,8 @@ class Nubank
         end
 
     unless available
-      raise "QR code is unavailable for #{payment_method.inspect}!"
+      raise Error::QRCodeUnavailable,
+            "QR code is unavailable for #{payment_method.inspect}!"
     end
 
     url = URI.parse(response.body.fetch(:schemas).fetch(:qrCodeContent))

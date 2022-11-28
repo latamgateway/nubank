@@ -119,7 +119,7 @@ RSpec.describe Nubank do
                 payment_method: "nupay",
               )
             end
-          }.to raise_error("QR code is unavailable for \"nupay\"!")
+          }.to raise_error(Nubank::Error::QRCodeUnavailable)
         end
       end
     end
