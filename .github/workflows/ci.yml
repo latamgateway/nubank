@@ -1,28 +1,13 @@
-name: RSpec
+name: CI
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
 jobs:
-  rspec:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v3
-        with:
-          path: ${{ github.repository }}
-
-      - name: Install dependencies
-        run: sudo apt-get install libcurl3-gnutls libcurl4-openssl-dev
-
-      - name: Setup Ruby for ${{ github.repository }}
-        uses: ruby/setup-ruby@v1
-        with:
-          working-directory: ${{ github.repository }}
-          bundler-cache: true
-
-      - name: RSpec
-        working-directory: ${{ github.repository }}
-        run: bundle exec rspec
+  test:
+    uses: latamgateway/ruby-linters-latam/.github/workflows/rspec.yml@add-package-dependencies-support
+    with:
+      package_dependencies: >-
+        libcurl3-gnutls
+        libcurl4-openssl-dev
