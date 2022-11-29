@@ -12,3 +12,4 @@ gem "webmock", "~> 3.18", group: :test
 gem "simplecov", "~> 0.21.2", require: false, group: :test
 gem "rspec-snapshot", "~> 2.0", group: :test
 gem "faker", "~> 3.0", group: :test
+gem "pry", "~> 0.14.1", group: :development
