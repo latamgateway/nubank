@@ -39,6 +39,7 @@ class Nubank
     shopper:,
     items:,
     callback_url:,
+    merchant_reference_id: reference_id,
     currency: "BRL",
     auto_cancel_delay_in_minutes: 30,
     settlement_delay_in_minutes: 1
@@ -47,7 +48,7 @@ class Nubank
       @nubank_client.post(
         relative("/checkouts/payments"),
         body: {
-          merchantOrderReference: reference_id,
+          merchantOrderReference: merchant_reference_id,
           referenceId: reference_id,
           amount: {
             value: value,
