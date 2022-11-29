@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Nubank API"
   spec.description = "Wrapper for the Nubank API"
-  spec.homepage = "https://github.com/latamgateway"
+  spec.homepage = "https://github.com/latamgateway/nubank"
   spec.required_ruby_version = ">= 2.7.2"
 
   spec.metadata["homepage_uri"] = spec.homepage
