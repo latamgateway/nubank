@@ -36,8 +36,10 @@ class Nubank
       time = Time.iso8601(timestamp)
       now = @clock.now
 
-      time - @clock_drift_in_seconds <= now &&
-        now <= time + @clock_drift_in_seconds
+      time.between?(
+        now - @clock_drift_in_seconds,
+        now + @clock_drift_in_seconds,
+      )
     end
   end
 end
