@@ -15,7 +15,9 @@ RSpec.describe Nubank::RequestVerifier do
     end
   end
 
-  let(:verifier) { Nubank::RequestVerifier.new(public_key: public_key) }
+  let(:verifier) do
+    Nubank::RequestVerifier.new(public_key: public_key, clock: clock)
+  end
 
   describe :fetch_public_key do
     it "returns the public key" do
@@ -41,6 +43,8 @@ RSpec.describe Nubank::RequestVerifier do
     let(:body) { request[:postData][:text] }
     let(:method) { request[:method] }
 
+    let(:clock) { double(:clock, now: Time.iso8601(timestamp)) }
+
     let(:valid) do
       verifier.valid?(
         signature: signature,
@@ -57,6 +61,14 @@ RSpec.describe Nubank::RequestVerifier do
 
     context "invalid signature" do
       let(:signature) { SecureRandom.base64(64) }
+
+      it "rejects the request" do
+        expect(valid).to be false
+      end
+    end
+
+    context "invalid timestamp" do
+      let(:clock) { double(:clock, now: Time.now - 1_000_000) }
 
       it "rejects the request" do
         expect(valid).to be false
