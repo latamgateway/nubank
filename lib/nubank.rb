@@ -1,12 +1,6 @@
 require "logger"
-require_relative "nubank/version"
-require_relative "http/nubank/client"
-require_relative "http/client"
-require_relative "nubank/payment/new"
-require_relative "nubank/payment/status"
-require_relative "nubank/refund/new"
-require_relative "nubank/refund/status"
-require_relative "nubank/error/qrcode_unavailable"
+
+Dir.glob("**/*.rb", base: __dir__).each { |path| require_relative path }
 
 class Nubank
   attr_accessor :logger
