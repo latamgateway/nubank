@@ -2,7 +2,7 @@ require "base64"
 require "logger"
 require "time"
 require "ed25519"
-require_relative "../http/json/client"
+require_relative "http/json/client"
 
 class Nubank
   class RequestVerifier
