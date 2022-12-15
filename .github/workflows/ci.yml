@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    uses: latamgateway/ruby-linters-latam/.github/workflows/rspec.yml@add-package-dependencies-support
+    uses: latamgateway/ruby-linters-latam/.github/workflows/rspec.yml@main
     with:
       package_dependencies: >-
         libcurl3-gnutls
