@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-api.spinpay.com.br/v1/security/request-signing-keys
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: null
+    headers:
+      'Http/2 200 ':
+      - ''
+      Date:
+      - Mon, 28 Nov 2022 02:34:56 GMT
+      Content-Type:
+      - application/json
+      Last-Modified:
+      - Thu, 24 Nov 2022 14:48:29 GMT
+      Etag:
+      - W/"637f843d-3d"
+      Content-Security-Policy:
+      - upgrade-insecure-requests
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Permissions-Policy:
+      - autoplay=(), accelerometer=(), camera=(), document-domain=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), sync-xhr=(), usb=(), picture-in-picture=(), publickey-credentials-get=(),
+        screen-wake-lock=(), xr-spatial-tracking=()
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 770fb5111abb0c7f-SOF
+      Content-Encoding:
+      - gzip
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"publicKey":"6WFNWA1YiXUP4pYCUAjzr77m0L5iaOwz6OhmvIyFABg="}
+
+        '
+  recorded_at: Mon, 28 Nov 2022 02:34:56 GMT
+recorded_with: VCR 6.1.0

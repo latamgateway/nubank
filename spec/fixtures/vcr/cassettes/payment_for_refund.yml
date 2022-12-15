@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-api.spinpay.com.br/v1/checkouts/payments
+    body:
+      encoding: UTF-8
+      string: '{"merchantOrderReference":"d5f82139-3fde-406b-9070-a814f9a6c997","referenceId":"d5f82139-3fde-406b-9070-a814f9a6c997","amount":{"value":12.34,"currency":"BRL"},"shopper":{"firstName":"John","lastName":"Doe","document":"12345678810","documentType":"CPF","email":"john.doe@example.com","phone":{"country":"55","number":"21987654321"}},"items":[{"id":"1","value":12.34,"quantity":1,"description":"A
+        dozen eggs"}],"callbackUrl":"https://example.com/webhooks","delayToAutoCancel":30,"delayToSettlement":1}'
+    headers:
+      X-Merchant-Key:
+      - "<X-Merchant-Key>"
+      X-Merchant-Token:
+      - "<X-Merchant-Token>"
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: null
+    headers:
+      'Http/2 200 ':
+      - ''
+      Date:
+      - Sun, 27 Nov 2022 23:29:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Transaction-Id:
+      - 775e5d60-340b-42f6-bfa4-4c7fc95f3405
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Download-Options:
+      - noopen
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - X-HTTP-Method-Override
+      Etag:
+      - W/"90-CcHz7xdLd3/W882cXCpSVfE9Npw"
+      Content-Security-Policy:
+      - upgrade-insecure-requests
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Permissions-Policy:
+      - autoplay=(), accelerometer=(), camera=(), document-domain=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), sync-xhr=(), usb=(), picture-in-picture=(), publickey-credentials-get=(),
+        screen-wake-lock=(), xr-spatial-tracking=()
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 770ea5a7bdad1c33-SOF
+      Content-Encoding:
+      - gzip
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"WAITING_PAYMENT_METHOD","pspReferenceId":"10eaac4f-5cb2-4552-b84d-a7d47491b9c8","referenceId":"d5f82139-3fde-406b-9070-a814f9a6c997"}'
+  recorded_at: Sun, 27 Nov 2022 23:29:39 GMT
+recorded_with: VCR 6.1.0

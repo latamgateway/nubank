@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-api.spinpay.com.br/v1/checkouts/payments/94baa2fa-92fd-4e6e-8ad0-48b9d3d916f5/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Merchant-Key:
+      - "<X-Merchant-Key>"
+      X-Merchant-Token:
+      - "<X-Merchant-Token>"
+  response:
+    status:
+      code: 200
+      message: null
+    headers:
+      'Http/2 200 ':
+      - ''
+      Date:
+      - Sun, 27 Nov 2022 00:03:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Transaction-Id:
+      - dcdbeaf0-a6af-4adc-971a-27a61a725646
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Download-Options:
+      - noopen
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"f7-Clux9o26zcIjWrSMzHQBAZ9a/4I"
+      Content-Security-Policy:
+      - upgrade-insecure-requests
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Permissions-Policy:
+      - autoplay=(), accelerometer=(), camera=(), document-domain=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), sync-xhr=(), usb=(), picture-in-picture=(), publickey-credentials-get=(),
+        screen-wake-lock=(), xr-spatial-tracking=()
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 77069a2f6ff90c7b-SOF
+      Content-Encoding:
+      - gzip
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"installmentNumber":1,"timestamp":"2022-11-27T00:01:11.951Z","amount":{"value":12.34,"currency":"BRL"},"pspReferenceId":"94baa2fa-92fd-4e6e-8ad0-48b9d3d916f5","referenceId":"08961c8b-18db-40ab-8337-434767df7b69","status":"WAITING_PAYMENT_METHOD"}'
+  recorded_at: Sun, 27 Nov 2022 00:03:43 GMT
+recorded_with: VCR 6.1.0

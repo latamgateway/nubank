@@ -1,0 +1,13 @@
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test:
+    uses: latamgateway/ruby-linters-latam/.github/workflows/rspec.yml@main
+    with:
+      package_dependencies: >-
+        libcurl3-gnutls
+        libcurl4-openssl-dev
