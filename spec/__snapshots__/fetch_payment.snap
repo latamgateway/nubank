@@ -4,4 +4,5 @@
  status=:WAITING_PAYMENT_METHOD,
  value=12.34,
  currency=:BRL,
- timestamp="2022-11-27T00:01:11.951Z">
+ timestamp="2022-11-27T00:01:11.951Z",
+ refunds=[]>

@@ -213,5 +213,16 @@ RSpec.describe Nubank do
         expect(info.pretty_inspect).to match_snapshot(:fetch_refund)
       end
     end
+
+    describe :fetch_payment do
+      it "returns the payment information" do
+        info =
+          VCR.use_cassette(:payment_with_refund) do
+            nubank.fetch_payment(payment_id: payment.payment_id)
+          end
+
+        expect(info.pretty_inspect).to match_snapshot(:payment_with_refund)
+      end
+    end
   end
 end

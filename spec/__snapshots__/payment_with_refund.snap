@@ -1,0 +1,15 @@
+#<struct Nubank::Payment::Status
+ payment_id="10eaac4f-5cb2-4552-b84d-a7d47491b9c8",
+ reference_id="d5f82139-3fde-406b-9070-a814f9a6c997",
+ status=:COMPLETED,
+ value=12.34,
+ currency=:BRL,
+ timestamp="2022-11-27T23:36:00.777Z",
+ refunds=
+  [#<struct Nubank::Refund::Status
+    payment_id="10eaac4f-5cb2-4552-b84d-a7d47491b9c8",
+    refund_id="96f920cd-025e-4b54-a8fc-009d6816e1c3",
+    refund_transaction_id="076f0c93-a53b-44f5-b696-5cb7bdd3a1a9",
+    status=:REFUNDING,
+    due_time=2022-12-06 02:59:59 UTC,
+    error=nil>]>
