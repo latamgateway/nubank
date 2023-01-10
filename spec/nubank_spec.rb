@@ -123,6 +123,30 @@ RSpec.describe Nubank do
         end
       end
     end
+
+    describe :fetch_app_link do
+      it "returns the AppLink" do
+        qrcode =
+          VCR.use_cassette(:fetch_app_link) do
+            nubank.fetch_app_link(payment_id: payment.payment_id)
+          end
+
+        expect(qrcode).to match_snapshot(:fetch_app_link)
+      end
+
+      context "when AppLink is unavailable" do
+        it "raises an error" do
+          expect {
+            VCR.use_cassette(:app_link_unavailable) do
+              nubank.fetch_app_link(
+                payment_id: payment.payment_id,
+                payment_method: "pix",
+              )
+            end
+          }.to raise_error(Nubank::Error::AppLinkUnavailable)
+        end
+      end
+    end
   end
 
   context "refunds" do
