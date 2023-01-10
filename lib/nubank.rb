@@ -45,7 +45,7 @@ class Nubank
           merchantOrderReference: merchant_reference_id,
           referenceId: reference_id,
           amount: {
-            value: value,
+            value: Float(value),
             currency: currency,
           },
           shopper: {
@@ -118,7 +118,7 @@ class Nubank
         body: {
           transactionRefundId: refund_id,
           amount: {
-            value: value,
+            value: Float(value),
             currency: currency,
           },
           delayToCompose: max_days_to_compose,

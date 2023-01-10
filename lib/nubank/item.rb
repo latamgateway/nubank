@@ -6,5 +6,8 @@ class Nubank
     :description,
     keyword_init: true,
   )
+    def value
+      Float(super)
+    end
   end
 end
