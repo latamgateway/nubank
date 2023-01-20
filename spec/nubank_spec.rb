@@ -41,6 +41,8 @@ RSpec.describe Nubank do
     ]
   end
 
+  let(:redirect_url) { nil }
+
   let(:create_payment) do
     lambda do |reference_id: random.uuid|
       nubank.create_payment(
@@ -49,6 +51,7 @@ RSpec.describe Nubank do
         shopper: shopper,
         items: items,
         callback_url: "https://example.com/webhooks",
+        redirect_url: redirect_url,
       )
     end
   end
@@ -73,6 +76,23 @@ RSpec.describe Nubank do
     describe :create_payment do
       it "creates the payment" do
         expect(payment.pretty_inspect).to match_snapshot(:create_payment)
+      end
+
+      context "with redirect URL" do
+        let(:seed) { 4313 }
+        let(:redirect_url) { "https://example.com/redirect" }
+
+        let(:payment) do
+          VCR.use_cassette(:create_payment_with_redirect_url) do
+            create_payment.call
+          end
+        end
+
+        it "creates the payment" do
+          expect(payment.pretty_inspect).to match_snapshot(
+            :payment_with_redirect_url,
+          )
+        end
       end
 
       context "with duplicate reference ID" do

@@ -34,16 +34,25 @@ class Nubank
     items:,
     callback_url:,
     merchant_reference_id: reference_id,
+    redirect_url: nil,
     currency: "BRL",
     auto_cancel_delay_in_minutes: 30,
     settlement_delay_in_minutes: 1
   )
+    payment_flow =
+      if redirect_url
+        { paymentFlow: { type: "redirect", returnUrl: redirect_url } }
+      else
+        {}
+      end
+
     response =
       @nubank_client.post(
         relative("/checkouts/payments"),
         body: {
           merchantOrderReference: merchant_reference_id,
           referenceId: reference_id,
+          **payment_flow,
           amount: {
             value: Float(value),
             currency: currency,
