@@ -1,4 +1,5 @@
 #<struct Nubank::Payment::New
  payment_id="94baa2fa-92fd-4e6e-8ad0-48b9d3d916f5",
  reference_id="08961c8b-18db-40ab-8337-434767df7b69",
- status=:WAITING_PAYMENT_METHOD>
+ status=:WAITING_PAYMENT_METHOD,
+ payment_url=nil>

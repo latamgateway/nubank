@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-api.spinpay.com.br/v1/checkouts/payment-methods
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Merchant-Key:
+      - "<X-Merchant-Key>"
+      X-Merchant-Token:
+      - "<X-Merchant-Token>"
+  response:
+    status:
+      code: 200
+      message: null
+    headers:
+      'Http/2 200 ':
+      - ''
+      Date:
+      - Wed, 11 Jan 2023 20:48:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Transaction-Id:
+      - 99e5f0ae-7f3b-4387-8656-9e973175c4bc
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Download-Options:
+      - noopen
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"3dc-aIi1TVJfCZPy22GhR7Kfvqav89Q"
+      Content-Security-Policy:
+      - upgrade-insecure-requests
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Permissions-Policy:
+      - autoplay=(), accelerometer=(), camera=(), document-domain=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), sync-xhr=(), usb=(), picture-in-picture=(), publickey-credentials-get=(),
+        screen-wake-lock=(), xr-spatial-tracking=()
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 7880840d69438ee4-SOF
+      Content-Encoding:
+      - gzip
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"schemas":{"qrCodeContent":"https://mock-institution.spinpay.com.br/v1/checkouts/qrcode-content","appLink":"https://mock-institution.spinpay.com.br/v1/checkouts/app-link","qrCode":"https://mock-institution.spinpay.com.br/v1/checkouts/qrcode"},"groups":[{"types":["pix"],"name":"Pix"},{"types":["nupay","spintest-link"],"name":"Wallets"}],"paymentMethods":[{"hasFields":false,"hasQRCode":false,"hasAppLink":true,"image":"https://storage.googleapis.com/spn-internal-pub/sandbox/1639698909002-e7d0e798-b9bc-4aa7-b7d9-33f574bffb26","type":"nupay","name":"NuPay"},{"hasFields":false,"hasQRCode":true,"hasAppLink":false,"image":"https://storage.googleapis.com/spn-internal-pub/sandbox/1602889558106-98fd21df-b8af-43d0-9caa-0138f74061b9","type":"pix","name":"Pix"},{"hasFields":false,"hasQRCode":true,"hasAppLink":true,"image":"https://storage.googleapis.com/spn-internal-pub/sandbox/1572461132312-ae28d3ba-5283-4207-b2bf-12dccc9793fa","type":"spintest-link","name":"Spin
+        Pay QRCode/AppLink"}]}'
+  recorded_at: Wed, 11 Jan 2023 20:48:53 GMT
+- request:
+    method: get
+    uri: https://mock-institution.spinpay.com.br/v1/checkouts/app-link?paymentMethodType=nupay&pspReferenceId=94baa2fa-92fd-4e6e-8ad0-48b9d3d916f5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: null
+    headers:
+      'Http/2 200 ':
+      - ''
+      Date:
+      - Wed, 11 Jan 2023 20:48:54 GMT
+      X-Transaction-Id:
+      - aaa4aae1-2592-4b95-ba36-70342fcd10d8
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - "*"
+      Access-Control-Allow-Headers:
+      - "*"
+      Content-Security-Policy:
+      - upgrade-insecure-requests
+      X-Frame-Options:
+      - deny
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Permissions-Policy:
+      - autoplay=(), accelerometer=(), camera=(), document-domain=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), sync-xhr=(), usb=(), picture-in-picture=(), publickey-credentials-get=(),
+        screen-wake-lock=(), xr-spatial-tracking=()
+      X-Xss-Protection:
+      - 1; mode=block
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 788084120d618ee0-SOF
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: https://app-link-example.com
+  recorded_at: Wed, 11 Jan 2023 20:48:54 GMT
+recorded_with: VCR 6.1.0

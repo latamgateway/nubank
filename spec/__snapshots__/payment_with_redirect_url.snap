@@ -1,0 +1,6 @@
+#<struct Nubank::Payment::New
+ payment_id="7f74ca5b-8546-4025-9701-f51947774e4c",
+ reference_id="b0fd74b7-16d2-4e6d-81db-f50a5ea605e6",
+ status=:WAITING_PAYMENT_METHOD,
+ payment_url=
+  "https://sandbox-checkout.spinpay.com.br/checkouts/7f74ca5b-8546-4025-9701-f51947774e4c?token=74+W6AJJ0cBw7DF6z+Jc31u3r/K6BGQVKU1hWMWSgdRGF/tS0hQVqVa2wiJLIc13v1Lm+xlNFIEYU1W0AhcmCw==">

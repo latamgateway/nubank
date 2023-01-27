@@ -41,6 +41,8 @@ RSpec.describe Nubank do
     ]
   end
 
+  let(:redirect_url) { nil }
+
   let(:create_payment) do
     lambda do |reference_id: random.uuid|
       nubank.create_payment(
@@ -49,6 +51,7 @@ RSpec.describe Nubank do
         shopper: shopper,
         items: items,
         callback_url: "https://example.com/webhooks",
+        redirect_url: redirect_url,
       )
     end
   end
@@ -73,6 +76,23 @@ RSpec.describe Nubank do
     describe :create_payment do
       it "creates the payment" do
         expect(payment.pretty_inspect).to match_snapshot(:create_payment)
+      end
+
+      context "with redirect URL" do
+        let(:seed) { 4313 }
+        let(:redirect_url) { "https://example.com/redirect" }
+
+        let(:payment) do
+          VCR.use_cassette(:create_payment_with_redirect_url) do
+            create_payment.call
+          end
+        end
+
+        it "creates the payment" do
+          expect(payment.pretty_inspect).to match_snapshot(
+            :payment_with_redirect_url,
+          )
+        end
       end
 
       context "with duplicate reference ID" do
@@ -120,6 +140,30 @@ RSpec.describe Nubank do
               )
             end
           }.to raise_error(Nubank::Error::QRCodeUnavailable)
+        end
+      end
+    end
+
+    describe :fetch_app_link do
+      it "returns the AppLink" do
+        qrcode =
+          VCR.use_cassette(:fetch_app_link) do
+            nubank.fetch_app_link(payment_id: payment.payment_id)
+          end
+
+        expect(qrcode).to match_snapshot(:fetch_app_link)
+      end
+
+      context "when AppLink is unavailable" do
+        it "raises an error" do
+          expect {
+            VCR.use_cassette(:app_link_unavailable) do
+              nubank.fetch_app_link(
+                payment_id: payment.payment_id,
+                payment_method: "pix",
+              )
+            end
+          }.to raise_error(Nubank::Error::AppLinkUnavailable)
         end
       end
     end
@@ -187,6 +231,17 @@ RSpec.describe Nubank do
           end
 
         expect(info.pretty_inspect).to match_snapshot(:fetch_refund)
+      end
+    end
+
+    describe :fetch_payment do
+      it "returns the payment information" do
+        info =
+          VCR.use_cassette(:payment_with_refund) do
+            nubank.fetch_payment(payment_id: payment.payment_id)
+          end
+
+        expect(info.pretty_inspect).to match_snapshot(:payment_with_refund)
       end
     end
   end

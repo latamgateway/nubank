@@ -34,18 +34,27 @@ class Nubank
     items:,
     callback_url:,
     merchant_reference_id: reference_id,
+    redirect_url: nil,
     currency: "BRL",
     auto_cancel_delay_in_minutes: 30,
     settlement_delay_in_minutes: 1
   )
+    payment_flow =
+      if redirect_url
+        { paymentFlow: { type: "redirect", returnUrl: redirect_url } }
+      else
+        {}
+      end
+
     response =
       @nubank_client.post(
         relative("/checkouts/payments"),
         body: {
           merchantOrderReference: merchant_reference_id,
           referenceId: reference_id,
+          **payment_flow,
           amount: {
-            value: value,
+            value: Float(value),
             currency: currency,
           },
           shopper: {
@@ -67,12 +76,13 @@ class Nubank
   end
 
   # https://docs.nupaybusiness.com.br/en/checkout/merchants/openapi/#operation/PaymentMethodsGet
-  def fetch_qrcode(payment_id:, payment_method: "pix")
-    response = @nubank_client.get(relative("/checkouts/payment-methods"))
-
+  def fetch_qrcode(
+    payment_id:,
+    payment_method: "pix",
+    payment_methods: fetch_payment_methods
+  )
     available =
-      response
-        .body
+      payment_methods
         .fetch(:paymentMethods)
         .any? do |method|
           method.fetch(:type) == payment_method && method.fetch(:hasQRCode)
@@ -83,17 +93,40 @@ class Nubank
             "QR code is unavailable for #{payment_method.inspect}!"
     end
 
-    url = URI.parse(response.body.fetch(:schemas).fetch(:qrCodeContent))
+    fetch_schema_url(
+      url: payment_methods.fetch(:schemas).fetch(:qrCodeContent),
+      payment_id: payment_id,
+      payment_method: payment_method,
+    )
+  end
 
-    url.query =
-      URI.encode_www_form(
-        pspReferenceId: payment_id,
-        paymentMethodType: payment_method,
-      )
+  # https://docs.nupaybusiness.com.br/en/checkout/merchants/openapi/#operation/PaymentMethodsGet
+  def fetch_app_link(
+    payment_id:,
+    payment_method: "nupay",
+    payment_methods: fetch_payment_methods
+  )
+    available =
+      payment_methods
+        .fetch(:paymentMethods)
+        .any? do |method|
+          method.fetch(:type) == payment_method && method.fetch(:hasAppLink)
+        end
 
-    response = @http_client.get(url)
+    unless available
+      raise Error::AppLinkUnavailable,
+            "AppLink is unavailable for #{payment_method.inspect}!"
+    end
 
-    response.body
+    fetch_schema_url(
+      url: payment_methods.fetch(:schemas).fetch(:appLink),
+      payment_id: payment_id,
+      payment_method: payment_method,
+    )
+  end
+
+  def fetch_payment_methods
+    @nubank_client.get(relative("/checkouts/payment-methods")).body
   end
 
   # https://docs.nupaybusiness.com.br/en/checkout/merchants/openapi/#operation/PaymentsStatusByPspReferenceIdGet
@@ -118,7 +151,7 @@ class Nubank
         body: {
           transactionRefundId: refund_id,
           amount: {
-            value: value,
+            value: Float(value),
             currency: currency,
           },
           delayToCompose: max_days_to_compose,
@@ -142,5 +175,19 @@ class Nubank
 
   def relative(url)
     "#{@base_url}#{url}"
+  end
+
+  def fetch_schema_url(url:, payment_id:, payment_method:)
+    uri = URI.parse(url)
+
+    uri.query =
+      URI.encode_www_form(
+        pspReferenceId: payment_id,
+        paymentMethodType: payment_method,
+      )
+
+    response = @http_client.get(uri)
+
+    response.body
   end
 end

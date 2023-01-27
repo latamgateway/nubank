@@ -7,6 +7,7 @@ class Nubank
       :value,
       :currency,
       :timestamp,
+      :refunds,
       keyword_init: true,
     )
       def self.from_hash(hash)
@@ -17,6 +18,15 @@ class Nubank
           value: hash.fetch(:amount).fetch(:value),
           currency: hash.fetch(:amount).fetch(:currency).to_sym,
           timestamp: hash.fetch(:timestamp),
+          refunds:
+            hash
+              .fetch(:refunds, [])
+              .map do |refund|
+                Refund::Status.from_hash(
+                  **hash.slice(:pspReferenceId),
+                  **refund,
+                )
+              end,
         )
       end
     end
