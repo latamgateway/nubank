@@ -14,7 +14,8 @@ class Nubank
           payment_id: hash.fetch(:pspReferenceId),
           refund_id: hash.fetch(:refundId),
           status: hash.fetch(:status).to_sym,
-          due_time: Time.parse(hash.fetch(:dueDate)),
+          # The sandbox is returning a null value but the docs say that it is required and of type string.
+          due_time: hash[:dueDate] ? Time.parse(hash.fetch(:dueDate)) : hash[:dueDate],
         )
       end
     end
