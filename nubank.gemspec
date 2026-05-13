@@ -35,7 +35,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "curb", "~> 1.0"
-  spec.add_dependency "cpf_cnpj", "~> 0.5.0"
+  spec.add_dependency "cpf_cnpj"
   spec.add_dependency "ed25519", "~> 1.3"
 
   # For more information and examples about making a new gem, check out our
