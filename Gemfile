@@ -5,6 +5,8 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in nubank.gemspec
 gemspec
 
+gem "cpf_cnpj", github: "latamgateway/cpf_cnpj", tag: "v2.1.0"
+
 gem "rspec", "~> 3.12", group: :test
 gem "dotenv", "~> 2.8", groups: %i[development test]
 gem "vcr", "~> 6.1", group: :test
